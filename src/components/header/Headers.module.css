@@ -1,0 +1,30 @@
+.header{
+    position: fixed;
+    background-color: rgb(190, 168, 168);
+    width: 100%;
+    top: 0%;
+    z-index: 1;
+}
+.container{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+.container li{
+    border: 1px solid rgb(218, 206, 206);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(13, 14, 14);
+    font-size: larger;
+    color: white;
+}
+.container li:hover{
+    transform: scale(2);
+}
+
+.button button{
+    padding: 5px;
+    width: 6rem;
+    font-size: x-large;
+    border-radius: 5px;
+}

@@ -1,0 +1,61 @@
+.CartContainer{
+    max-width: 500px;
+    border: 2px solid red;
+    position: fixed;
+    right: 0;
+    top: 74px;
+    background-color: black;
+    /* opacity: 70%; */
+    height: 90vh;
+}
+.UOlist{
+    border: 5px solid red;
+    background-color:rgb(7, 5, 5)
+}
+.cartList{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    background-color: rgb(8, 8, 8);
+    border: 1px solid red;
+    margin: 5px;
+    color: white;
+}
+img{
+    /* border: 1px solid red; */
+    width: 80px;
+    height: 80px;
+}
+.div1{
+    /* align-items: center; */
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.div2{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+}
+.div3{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+}
+
+.cartHeader{
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: xx-large;
+}
+.div3 input{
+    width: 20px;
+}
+.cross{
+    display: flex;
+    justify-content: end;
+    color: white;
+    font-size: xx-large;
+    padding: 10px;
+}
