@@ -1,0 +1,39 @@
+.container{
+    text-align: center;
+    
+}
+
+.UoList{
+    list-style-type:none;
+  
+}
+.list{
+    border: 1px solid rgb(131, 118, 118);
+    display: inline-block;
+    width: 40%;
+    margin: 10px;
+    background-color: rgb(70, 65, 58);
+    border-radius: 15px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.description{
+   display: flex;
+   justify-content: space-between;
+   margin: 0 22%;
+   align-items: center;
+}
+
+.listButton{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(136, 149, 160);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.listButton:hover{
+    background-color: rgb(63, 161, 17);
+    transform: scale(2);
+    color: white;
+}
