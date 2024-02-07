@@ -1,16 +1,20 @@
 .CartContainer{
-    max-width: 500px;
-    border: 2px solid red;
+    max-width: 900px;
+    border: 2px solid rgb(173, 162, 162);
     position: fixed;
     right: 0;
     top: 74px;
     background-color: black;
     /* opacity: 70%; */
-    height: 90vh;
+    height: 80vh;
+    border-radius: 10px;
 }
 .UOlist{
-    border: 5px solid red;
-    background-color:rgb(7, 5, 5)
+    border: 5px solid rgb(190, 175, 175);
+    background-color:rgb(7, 5, 5);
+    overflow: scroll;
+    height: 400px;
+    border-radius: 10px;
 }
 .cartList{
     display: flex;
@@ -32,6 +36,12 @@ img{
     align-items: center;
     /* border: 1px solid red; */
 }
+.div1 p{
+    max-width: 50px;
+    margin-right: 5px;
+    /* border: 5px solid red; */
+    overflow-x: hidden;
+}
 .div2{
     /* border: 1px solid red; */
     display: flex;
@@ -41,6 +51,7 @@ img{
     /* border: 1px solid red; */
     display: flex;
     align-items: center;
+    margin: 0 5px;
 }
 
 .cartHeader{
@@ -58,4 +69,8 @@ img{
     color: white;
     font-size: xx-large;
     padding: 10px;
+}
+.cross button{
+    padding: 5px;
+    margin: 5px;
 }

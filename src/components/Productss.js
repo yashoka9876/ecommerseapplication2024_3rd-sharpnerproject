@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './Productss.module.css'
+import CartContext from '../store/createContext';
 const productsArr = [
 
     {
+    id:'m1',
     
     title: 'Colors',
     
@@ -13,6 +15,7 @@ const productsArr = [
     },
     
     {
+    id:'m2',
     
     title: 'Black and white Colors',
     
@@ -24,6 +27,8 @@ const productsArr = [
     
     {
     
+    id:'m3',
+
     title: 'Yellow and Black Colors',
     
     price: 70,
@@ -33,6 +38,8 @@ const productsArr = [
     },
     
     {
+    
+    id:'m4',
     
     title: 'Blue Color',
     
@@ -47,18 +54,34 @@ const productsArr = [
 
     
     const Productss = () => {
+
+       const CTX= useContext(CartContext)
+
+
+
+
+
+
+
+
+
+
+
+
       return (
         <div className={classes.container}>
             <ul className={classes.UoList}>
         {
-            productsArr.map(item=><li className={classes.list} key={item.id}>
+            productsArr.map(item=><li   className={classes.list} key={item.id}>
                 <div>
                     <p>{item.title}</p>
                     <img src={item.imageUrl} alt='food images' />
                 </div>
                 <div className={classes.description}>
                     <span>{item.price}$</span>
-                    <button className={classes.listButton}>Add to cart</button>
+                    <button className={classes.listButton} onClick={()=>CTX.CartElementHandler({
+                        ...item
+                    })}>Add to cart</button>
                 </div>
             </li>)
         }

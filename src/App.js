@@ -5,7 +5,7 @@ import Header from "./components/header/Headers";
 
 
 function App() {
-  const [cartItem,setCartItem]=useState(true)
+  const [cartItem,setCartItem]=useState(false)
 
   const handleCartItem=()=>{
     setCartItem((item)=>!item);
@@ -15,7 +15,7 @@ function App() {
     <>
     <Header  onHandleCartItem={handleCartItem} />
     <Productss/>
-    { cartItem && <Cart/>}
+    { cartItem && <Cart onHandleCartItem={handleCartItem} />}
     </>
   );
 }

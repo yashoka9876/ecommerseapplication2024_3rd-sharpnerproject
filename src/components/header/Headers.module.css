@@ -28,3 +28,13 @@
     font-size: x-large;
     border-radius: 5px;
 }
+
+.headerCartNo{
+    border: 1px solid rgb(110, 99, 99);
+    position: absolute;
+    top: 2px;
+    right: 8%;
+    background-color: aliceblue;
+    border-radius: 8px;
+    border-bottom: 5px solid rebeccapurple;
+}
