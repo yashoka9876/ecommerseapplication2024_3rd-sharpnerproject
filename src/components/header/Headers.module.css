@@ -1,14 +1,20 @@
-.header{
-    position: fixed;
-    background-color: rgb(190, 168, 168);
-    width: 100%;
-    top: 0%;
-    z-index: 1;
+.headerCon{
+    background-color: rgb(138, 127, 127);
+    padding: 40px;
+    border: 1px solid rgb(19, 18, 18);
+    /* font-size: 100px; */
 }
 .container{
     display: flex;
     list-style-type: none;
     justify-content: space-around;
+    color:white;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    /* border: 2px solid red; */
+    margin-left: -42px;
 }
 .container li{
     border: 1px solid rgb(218, 206, 206);
@@ -37,4 +43,10 @@
     background-color: aliceblue;
     border-radius: 8px;
     border-bottom: 5px solid rebeccapurple;
+}
+.generic{
+    /* padding-top: 100px; */
+    padding: 40px;
+    font-size: 100px;
+    text-align: center;
 }

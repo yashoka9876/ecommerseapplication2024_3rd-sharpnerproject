@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import classes from './Headers.module.css'
 import CartContext from '../../store/createContext';
+import { Link } from 'react-router-dom';
 const Header = (props) => {
 
   let CTX=useContext(CartContext);
@@ -9,15 +10,18 @@ const Header = (props) => {
   },0)
 
   return (
-   <header className={classes.header}>
+   <header className={classes.headerCon}>
          <ul className={classes.container}>
-            <li>Home</li>
-            <li>Store</li>
-            <li>About</li>
+            <li><Link to=''>Home</Link></li>
+            <li><Link to='store'>Store</Link></li>
+            <li><Link to='about'>About</Link></li>
             <div className={classes.button}>
                 <button onClick={()=>props.onHandleCartItem()}>cart<span className={classes.headerCartNo}>{totalQuantity}</span></button>
             </div>
          </ul>
+         <div className={classes.generic}>
+          The Generics
+         </div>
    </header>
   )
 }
