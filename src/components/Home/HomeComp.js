@@ -36,9 +36,15 @@ const Ticket=[
 const HomeComp = () => {
     const [movies,setMovies]=useState([]);
     const[isLoading,setIsLoading]=useState(false);
+    const[error,setError]=useState(null)
+
     async function  fetchMovieHandler(){
-        setIsLoading(true);
-        const response=await fetch('https://swapi.dev/api/films');
+        try{
+            setIsLoading(true);
+        const response=await fetch('https://swapi.dev/api/filmss');
+        if(!response.ok){
+            throw new Error('Something went wrong brother')
+        }
        const data= await response.json();
        const transformedMovie=data.results.map((movieData)=>{
         return {
@@ -48,8 +54,13 @@ const HomeComp = () => {
             releaseDate:movieData.release_date
         }
        })
-       setIsLoading(false);
        setMovies(transformedMovie);
+    }catch(error){
+        setError(error.message)
+    }
+    setIsLoading(false);
+        
+        
     }
   return (
    <>
@@ -57,13 +68,15 @@ const HomeComp = () => {
             <button  onClick={fetchMovieHandler}>Fetch Movie</button>
         </section>
         <section className={classes.HomeCompContainer}>
-            {isLoading && <h1>Loading....</h1>}
+            {isLoading && movies.length>=0 &&<h1 className={classes.MovieItem}>Loading....</h1>}
+            {!isLoading && movies.length===0 && !error && <p className={classes.MovieItem}>found no movie</p>}
             {!isLoading &&
             movies.map(item=><li className={classes.MovieItem}>
                 <h1>{item.title}</h1>
                 <p>{item.openingText}</p>
                 </li>)
                 }
+            {!isLoading && error && <h1 className={classes.MovieItem}>{error}</h1>}
         </section>
          <section className={classes.HomeCompContainer}>
         <ul>
