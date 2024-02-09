@@ -2,12 +2,26 @@
 max-width: 900px;
 margin: 20px auto;
 }
+.HomeCompContainerbtn button{
+   
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 10px solid rgb(59, 56, 56);
+}
+.HomeCompContainerbtn{
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+}
 .tourItem{
     display: flex;
     border-bottom: 3px solid rgb(11, 219, 63);
     margin: 20px 0px;
     padding: 10px;
     background-color: rgb(167, 149, 127);
+    align-items: center;
+    border-radius: 5px;
 }
 
 .tourDate{
@@ -21,5 +35,18 @@ width: 25%;
     width: 53%;
 }
 .tourItem button{
-    padding: 20px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.MovieItem{
+    max-width: 500px;
+    border: 5px solid rgb(63, 60, 60);
+    list-style-type: none;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(111, 82, 190);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

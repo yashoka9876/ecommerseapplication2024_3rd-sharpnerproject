@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import classes from './Headers.module.css'
 import CartContext from '../../store/createContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 const Header = (props) => {
+
+  const location=useLocation();
 
   let CTX=useContext(CartContext);
   let totalQuantity=CTX.cartElements.reduce((a,b)=>{
@@ -22,8 +24,8 @@ const Header = (props) => {
          <div className={classes.generic}>
           The Generics
          </div>
-         <button className={classes.latestalbum} >Get our latest albut</button>
-         <button className={classes.playbtn}>►</button>
+         {location.pathname==='/' && <button className={classes.latestalbum} >Get our latest albut</button>}
+         {location.pathname==='/' && <button className={classes.playbtn}>►</button>}
    </header>
   )
 }

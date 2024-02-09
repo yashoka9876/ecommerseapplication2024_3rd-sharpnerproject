@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './HomeComp.module.css'
 const Ticket=[
     {
@@ -34,19 +34,52 @@ const Ticket=[
 ]
 
 const HomeComp = () => {
+    const [movies,setMovies]=useState([]);
+    const[isLoading,setIsLoading]=useState(false);
+    async function  fetchMovieHandler(){
+        setIsLoading(true);
+        const response=await fetch('https://swapi.dev/api/films');
+       const data= await response.json();
+       const transformedMovie=data.results.map((movieData)=>{
+        return {
+            id:movieData.episode_id,
+            title:movieData.title,
+            openingText:movieData.opening_crawl,
+            releaseDate:movieData.release_date
+        }
+       })
+       setIsLoading(false);
+       setMovies(transformedMovie);
+    }
   return (
-    <section className={classes.HomeCompContainer}>
+   <>
+        <section className={classes.HomeCompContainerbtn}>
+            <button  onClick={fetchMovieHandler}>Fetch Movie</button>
+        </section>
+        <section className={classes.HomeCompContainer}>
+            {isLoading && <h1>Loading....</h1>}
+            {!isLoading &&
+            movies.map(item=><li className={classes.MovieItem}>
+                <h1>{item.title}</h1>
+                <p>{item.openingText}</p>
+                </li>)
+                }
+        </section>
+         <section className={classes.HomeCompContainer}>
         <ul>
             {
                Ticket.map((item)=><li className={classes.tourItem}>
                 <span className={classes.tourDate}>{item.date}</span>
                 <span className={classes.tourPlace}>{item.state}</span>
                 <span className={classes.tourSpecPlace}>{item.type}</span>
-                <button>'Buy Ticket'</button>
+                <button>Buy Ticket</button>
                </li>) 
             }
         </ul>
     </section>
+    
+   </>
+    
   )
 }
 
