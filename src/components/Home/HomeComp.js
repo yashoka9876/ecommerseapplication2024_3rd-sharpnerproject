@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './HomeComp.module.css'
 const Ticket=[
     {
@@ -41,7 +41,7 @@ const HomeComp = () => {
     async function  fetchMovieHandler(){
         try{
             setIsLoading(true);
-        const response=await fetch('https://swapi.dev/api/filmss');
+        const response=await fetch('https://swapi.dev/api/films');
         if(!response.ok){
             throw new Error('Something went wrong brother')
         }
@@ -54,14 +54,18 @@ const HomeComp = () => {
             releaseDate:movieData.release_date
         }
        })
+       setError(false)
        setMovies(transformedMovie);
     }catch(error){
         setError(error.message)
     }
     setIsLoading(false);
-        
-        
+          
     }
+
+    useEffect(()=>{
+        fetchMovieHandler()
+    },[])
   return (
    <>
         <section className={classes.HomeCompContainerbtn}>
