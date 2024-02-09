@@ -22,6 +22,8 @@ const Header = (props) => {
          <div className={classes.generic}>
           The Generics
          </div>
+         <button className={classes.latestalbum} >Get our latest albut</button>
+         <button className={classes.playbtn}>►</button>
    </header>
   )
 }

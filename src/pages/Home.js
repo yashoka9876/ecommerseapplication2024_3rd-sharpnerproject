@@ -1,9 +1,11 @@
 import React from 'react'
-import Productss from '../components/Productss'
+import HomeComp from '../components/Home/HomeComp'
+
+
 
 const Home = () => {
   return (
-    <h1>Home Page</h1>
+    <HomeComp />
   )
 }
 

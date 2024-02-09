@@ -1,0 +1,25 @@
+.HomeCompContainer{
+max-width: 900px;
+margin: 20px auto;
+}
+.tourItem{
+    display: flex;
+    border-bottom: 3px solid rgb(11, 219, 63);
+    margin: 20px 0px;
+    padding: 10px;
+    background-color: rgb(167, 149, 127);
+}
+
+.tourDate{
+width: 12%;
+}
+
+.tourPlace{
+width: 25%;
+}
+.tourSpecPlace{
+    width: 53%;
+}
+.tourItem button{
+    padding: 20px;
+}

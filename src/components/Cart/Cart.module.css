@@ -21,9 +21,10 @@
     text-align: center;
     justify-content: space-between;
     background-color: rgb(8, 8, 8);
-    border: 1px solid red;
+    border: 5px solid rgb(155, 129, 129);
     margin: 5px;
     color: white;
+    border-radius: 10px;
 }
 img{
     /* border: 1px solid red; */
