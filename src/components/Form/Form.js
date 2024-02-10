@@ -4,10 +4,20 @@ const Form = () => {
     const title=useRef();
     const textarea=useRef();
     const date=useRef();
-    function formHandler(){
-        console.log(title.current.value)
-        console.log(textarea.current.value)
-        console.log(date.current.value)
+    async function formHandler(event){
+        event.preventDefault();
+        let movie={
+            title:title.current.value,
+            openingText:textarea.current.value,
+            releaseDate:date.current.value
+        }
+        const response=await fetch('https://sharpnerhttp-default-rtdb.firebaseio.com/movies.json',{
+            method:"POST",
+            body:JSON.stringify(movie),
+            'Content-Type':'application/json'
+        })
+        const data=await response.json();
+        console.log(data);
     }
   return (
     <section  className={classes.HomeCompContainer}>
@@ -30,7 +40,7 @@ const Form = () => {
                 ref={date}
                 type='date'></input>
             </div>
-            <button>Add Movie</button>
+            <button className={classes.FormBtn}>Add Movie</button>
             </form>
         </section>
   )

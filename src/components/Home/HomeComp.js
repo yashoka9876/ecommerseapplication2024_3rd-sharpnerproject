@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import classes from './HomeComp.module.css'
+import Form from '../Form/Form';
 const Ticket=[
     {
         date:'july 16',
@@ -38,36 +39,41 @@ const HomeComp = () => {
     const[isLoading,setIsLoading]=useState(false);
     const[error,setError]=useState(null)
 
-    async function  fetchMovieHandler(){
+    const fetchMovieHandler=useCallback(async function (){
         try{
             setIsLoading(true);
-        const response=await fetch('https://swapi.dev/api/films');
+        const response=await fetch('https://sharpnerhttp-default-rtdb.firebaseio.com/movies.json');
         if(!response.ok){
             throw new Error('Something went wrong brother')
         }
        const data= await response.json();
-       const transformedMovie=data.results.map((movieData)=>{
-        return {
-            id:movieData.episode_id,
-            title:movieData.title,
-            openingText:movieData.opening_crawl,
-            releaseDate:movieData.release_date
-        }
-       })
+
+       const loadedMovies=[];
+
+       for(const key in data){
+            loadedMovies.push({
+                id:key,
+                title:data[key].title,
+                openingText:data[key].openingText,
+                releaseDate:data[key].releaseDate
+            })
+       }
+       
        setError(false)
-       setMovies(transformedMovie);
+       setMovies(loadedMovies);
     }catch(error){
         setError(error.message)
     }
     setIsLoading(false);
           
-    }
+    },[]);
 
     useEffect(()=>{
         fetchMovieHandler()
     },[])
   return (
    <>
+        <Form/>
         <section className={classes.HomeCompContainerbtn}>
             <button  onClick={fetchMovieHandler}>Fetch Movie</button>
         </section>
