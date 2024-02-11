@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useCallback, useEffect, useState } from 'react'
 import classes from './HomeComp.module.css'
 import Form from '../Form/Form';
@@ -68,6 +69,33 @@ const HomeComp = () => {
           
     },[]);
 
+    async function deleteHandler(id) {
+        console.log(id);
+        try {
+            const response = await fetch(`https://sharpnerhttp-default-rtdb.firebaseio.com/movies/${id}.json`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error('Failed to delete item');
+            }
+            const data = await response.json();
+            //Here this pop up will generate 
+
+            window.alert("Item Deleted succesfully");
+                location.reload()
+            
+
+            // Automatically close the alert after 5 seconds
+
+
+
+
+            console.log(data);
+        } catch (error) {
+            console.error('Error deleting item:', error.message);
+        }
+    }
+
     useEffect(()=>{
         fetchMovieHandler()
     },[])
@@ -84,6 +112,9 @@ const HomeComp = () => {
             movies.map(item=><li className={classes.MovieItem}>
                 <h1>{item.title}</h1>
                 <p>{item.openingText}</p>
+                <div>
+                    <button onClick={()=>deleteHandler(item.id)}>DeleteMovie</button>
+                </div>
                 </li>)
                 }
             {!isLoading && error && <h1 className={classes.MovieItem}>{error}</h1>}

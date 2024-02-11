@@ -17,6 +17,7 @@ const Header = (props) => {
             <li><Link to=''>Home</Link></li>
             <li><Link to='store'>Store</Link></li>
             <li><Link to='about'>About</Link></li>
+            <li><Link to='contect'>ContecUs</Link></li>
             <div className={classes.button}>
                 <button onClick={()=>props.onHandleCartItem()}>cart<span className={classes.headerCartNo}>{totalQuantity}</span></button>
             </div>

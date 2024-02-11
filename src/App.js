@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Store from "./pages/Store";
 import RootLayout from "./pages/RootLayout";
+import Contect from "./pages/Contect";
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
     children:[
       {index:true,element:<Home/>},
       {path:'about',element:<About/>},
-      {path:'store',element:<Store/>}
+      {path:'store',element:<Store/>},
+      {path:'contect',element:<Contect/>}
     ]
     },
   ])
