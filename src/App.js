@@ -1,13 +1,11 @@
-import { useState } from "react";
-import Cart from "./components/Cart/Cart";
-import Productss from "./components/Productss";
-import Header from "./components/header/Headers";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Store from "./pages/Store";
 import RootLayout from "./pages/RootLayout";
-import Contect from "./pages/Contect";
+import Contects from "./pages/Contect";
+import StoreItem from "./pages/StoreItem";
 
 
 function App() {
@@ -18,7 +16,8 @@ function App() {
       {index:true,element:<Home/>},
       {path:'about',element:<About/>},
       {path:'store',element:<Store/>},
-      {path:'contect',element:<Contect/>}
+      {path:'/store/:ItemId',element:<StoreItem/>},
+      {path:'contect',element:<Contects/>}
     ]
     },
   ])

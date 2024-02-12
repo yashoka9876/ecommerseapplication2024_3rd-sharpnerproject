@@ -1,9 +1,9 @@
 import React from 'react'
-
-const Contect = () => {
+import Contect from '../components/Contect/Contect';
+const Contects = () => {
   return (
-    <div>Contect</div>
+    <Contect/>
   )
 }
 
-export default Contect
+export default Contects

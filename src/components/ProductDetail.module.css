@@ -1,0 +1,30 @@
+.container{
+    text-align: center;
+    margin-top: 74px;
+    border: 5px solid rgb(243, 226, 226);
+    
+}
+
+.Prizee{
+    display: flex;
+    justify-content: center;
+    width: inherit;
+    font-size: larger;
+    font-weight: 900;
+    margin-bottom: 100px;
+}
+.Prizee p{
+    margin: 0 4rem;
+}
+
+.list{
+    border: 1px solid rgb(131, 118, 118);
+    display: block;
+    
+    margin: 10px;
+    background-color: rgb(70, 65, 58);
+    border-radius: 15px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

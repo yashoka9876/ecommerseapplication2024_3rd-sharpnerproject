@@ -6,37 +6,42 @@ const Contect = () => {
     const number=useRef();
     async function formHandler(event){
         event.preventDefault();
-        let obj={
-            title,
-            email,
-            number
+        const obj={
+            title:title.current.value,
+            email:email.current.value,
+            number:number.current.value
         }
-        const response=await fetch('https://sharpnerhttp-default-rtdb.firebaseio.com/movies.json',{
+        const response=await fetch('https://sharpnerhttp-default-rtdb.firebaseio.com/AUTH.json',{
             method:"POST",
             body:JSON.stringify(obj),
             'Content-Type':'application/json'
         })
         const data=await response.json();
         console.log(data);
+        title.current.value='';
+        email.current.value='';
+        number.current.value='';
+        
+
     }
   return (
     <section  className={classes.HomeCompContainer}>
     <form onSubmit={formHandler}>
     <div className={classes.InputDiv}>
-        <label>Title</label>
+        <label>Name</label>
         <input
         ref={title}
         type='text'></input>
     </div>
     <div className={classes.InputDiv} >
-        <label>Opening Text</label>
+        <label>Email</label>
         <input
         type='email'
         ref={email}
         id="paragraphInput" name="paragraphInput" rows="4" cols="50"></input>
     </div>
     <div className={classes.InputDiv}> 
-        <label>release_date</label>
+        <label>Mobile No..</label>
         <input
         ref={number}
         type='tel'></input>
