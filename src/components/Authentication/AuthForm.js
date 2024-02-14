@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from 'react';
 
 import classes from './AuthForm.module.css';
 import AuthContext from '../../store/auth-context';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 
 
 const AuthForm = () => {
@@ -66,9 +66,8 @@ const AuthForm = () => {
         })
       }
     }).then(data=>{
-      console.log(typeof(+data.expiresIn));
+      navigate('/store');
       Ctx.login(data.idToken)
-      navigate('/store')
     }).catch(err =>{
       console.log("this one is not fair")
       alert('here you got login error')
