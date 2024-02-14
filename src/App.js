@@ -6,6 +6,7 @@ import Store from "./pages/Store";
 import RootLayout from "./pages/RootLayout";
 import Contects from "./pages/Contect";
 import StoreItem from "./pages/StoreItem";
+import AuthForm from './components/Authentication/AuthForm';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     children:[
       {index:true,element:<Home/>},
       {path:'about',element:<About/>},
+      {path:'login',element:<AuthForm/>},
       {path:'store',element:<Store/>},
       {path:'/store/:ItemId',element:<StoreItem/>},
       {path:'contect',element:<Contects/>}
