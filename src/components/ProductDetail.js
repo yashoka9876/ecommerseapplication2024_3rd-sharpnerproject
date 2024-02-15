@@ -29,11 +29,11 @@ const ProductDetail = () => {
       <h1>reviews</h1>
       <ul>
         {
-          Reviews.map((obj)=><li className={classes.list}>
+          Reviews.map((obj)=>{ return <li className={classes.list}>
             {
               obj.review
             }
-          </li>)
+          </li>})
         }
       </ul>
     </div>

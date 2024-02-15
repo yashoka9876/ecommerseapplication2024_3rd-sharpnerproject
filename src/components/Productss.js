@@ -3,7 +3,6 @@ import classes from './Productss.module.css'
 import CartContext from '../store/createContext';
 import { Link } from 'react-router-dom';
 export const productsArr = [
-
     {
     id:'m1',
     
