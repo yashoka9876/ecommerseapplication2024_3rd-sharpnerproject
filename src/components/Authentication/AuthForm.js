@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from 'react';
 
 import classes from './AuthForm.module.css';
 import AuthContext from '../../store/auth-context';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const AuthForm = () => {
@@ -28,14 +28,9 @@ const AuthForm = () => {
     setIsLoding(true)
     let url;
     if(isLogin){
-      console.log(isLogin);
       //here we are logic the credential data
       url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDa_jbUsg5x1ywvKesSXurNjxjYY7Hn2BU'
-    } else{
-      console.log(isLogin);
-      // This one is when use create the stuff
-      url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDa_jbUsg5x1ywvKesSXurNjxjYY7Hn2BU'
-    }
+    } 
 
     //here we will handle both signup and signin 
 
@@ -66,10 +61,10 @@ const AuthForm = () => {
         })
       }
     }).then(data=>{
+        Ctx.login(data.idToken,data.email);
       navigate('/store');
-      Ctx.login(data.idToken)
+      console.log("may this one is work over here");
     }).catch(err =>{
-      console.log("this one is not fair")
       alert('here you got login error')
     });
 

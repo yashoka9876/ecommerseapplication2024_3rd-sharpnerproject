@@ -21,7 +21,7 @@ function App() {
       element:<Store/>,
       loader:()=>{
         if(!localStorage.getItem('token')){
-          console.log("i this this oen is working")
+          console.log("i this this one is working")
           return redirect('/login')
         }else{
           console.log('Hai this one is here');

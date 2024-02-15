@@ -3,6 +3,7 @@ import React, {useState } from "react"
 const AuthContext=React.createContext({
     token:'',
     isLoggedIn:false,
+    email:'',
     login:()=>{},
     logout:()=>{}
 })
@@ -11,19 +12,23 @@ const AuthContext=React.createContext({
 //return here to overlap <App/> component
 
 export const AuthContextProvider = (props)=>{
-    const [token,setToken]=useState(localStorage.getItem('token'))
+    const [token,setToken]=useState(localStorage.getItem('token'));
+    const [email,setEmail]=useState(localStorage.getItem('email'));
 
     const userIsLoggedIn=!!token;
 
-    const loginHandler = (token)=>{
-        console.log(token);
+    const loginHandler = (token,email)=>{
         localStorage.setItem('token',token);
+        localStorage.setItem('email',email);
         setToken(token);
+        setEmail(email);
     }
 
     const logoutHandler= ()=>{
         localStorage.removeItem('token');
+        localStorage.removeItem('email')
         setToken(null);
+        setEmail(null);
     }
 
     // setTimeout(logoutHandler,5000)
@@ -32,6 +37,7 @@ export const AuthContextProvider = (props)=>{
     return <AuthContext.Provider value={{
         token:token,
         isLoggedIn:userIsLoggedIn,
+        email:email,
         login:loginHandler,
         logout:logoutHandler
     }}>

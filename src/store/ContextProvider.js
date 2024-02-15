@@ -1,56 +1,74 @@
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CartContext from './createContext'
+import AuthContext from './auth-context';
+import axios from 'axios';
 
 
-export const cartElements = [
 
-    {
-    id:'m1',
+// export const cartElements = [
+
+//     {
+//     id:'m1',
     
-    title: 'Colors',
+//     title: 'Colors',
     
-    price: 100,
+//     price: 100,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
     
-    quantity: 2,
+//     quantity: 2,
     
-    },
+//     },
     
-    {
-    id:'m2',
+//     {
+//     id:'m2',
     
-    title: 'Black and white Colors',
+//     title: 'Black and white Colors',
     
-    price: 50,
+//     price: 50,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
     
-    quantity: 3,
+//     quantity: 3,
     
-    },
+//     },
     
-    {
+//     {
     
-    id:'m3',
+//     id:'m3',
     
-    title: 'Yellow and Black Colors',
+//     title: 'Yellow and Black Colors',
     
-    price: 70,
+//     price: 70,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
     
-    quantity: 1,
+//     quantity: 1,
     
+//     }
+    
+//     ]
+function PostApi(email,cartData){
+
+  axios.post(`https://crudcrud.com/api/0498a9c2c11a4cb7bfebd6ab47237c7f/Cart${email.replace(/[@.]/g, '')}`,{...cartData})
+  .then(res=> {
+    if(res.ok){
+      return res.json()
+    }else{
+      return console.error('Failed to store item')
     }
-    
-    ]
-
+  })
+  .then(data=>console.log(data))
+  .catch(err=>console.log('Error',err))
+}
 
     const ContextProvider = ({ children }) => {
-        const [CartEl,setCartItem]=useState(cartElements);
+        const [CartEl,setCartItem]=useState([]);
         const updatedCartItem=[...CartEl];
+
+       const Ctx= useContext(AuthContext)
+       
 
 
         const CartElementHandler=(product)=>{
@@ -60,11 +78,17 @@ export const cartElements = [
             if(indexItem){
                 updatedItem={...product,quantity:(indexItem.quantity)+1}
                 updatedCartItem[index]=updatedItem;
+
+                PostApi(Ctx.email,updatedItem)
                 setCartItem([...updatedCartItem])
                 return;
             }
-
+            PostApi(Ctx.email,{...product,quantity:1});
             setCartItem([...updatedCartItem,{...product,quantity:1}])
+        }
+
+        const setCartHandler=(arrayobj)=>{
+          setCartItem([...arrayobj]);
         }
 
 
@@ -80,7 +104,8 @@ export const cartElements = [
         return (
           <CartContext.Provider value={{ 
             cartElements:CartEl,
-            CartElementHandler:CartElementHandler
+            CartElementHandler:CartElementHandler,
+            setCartHandler:setCartHandler
           }}>
             {children}
           </CartContext.Provider>
